@@ -10,11 +10,10 @@ using namespace local_planner;
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "local_planner_node");
-  // ros::NodeHandle node;
   ros::NodeHandle nh("~");
 
-  PotentialFiledPlanner apl;
-  apl.init(nh);
+  LocalPlanningClass local_planning;
+  local_planning.init(nh);
 
   ros::spin();
 

@@ -48,7 +48,7 @@
         <plugin name="laser" filename="libRayPlugin.so" />
         <plugin name="2Dlidar" filename="libgazebo_ros_laser.so">
           <topicName>/prometheus/sensors/2Dlidar_scan</topicName>
-          <frameName>rplidar_link</frameName>
+          <frameName>lidar_link</frameName>
         </plugin>
         <always_on>1</always_on>
         <update_rate>10</update_rate>

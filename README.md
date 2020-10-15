@@ -10,7 +10,7 @@ Prometheus是一套开源的**自主无人机软件平台**，为无人机的智
 
  - **安装及使用：** [Prometheus WIKI](https://github.com/amov-lab/Prometheus/wiki)
 
- - **配套课程：**    即将推出，敬请期待！ 请关注 [铂贝学院](https://bbs.amovlab.com/plugin.php?id=zhanmishu_video:video)
+ - **配套课程：**    Prometheus自主无人机二次开发课程，本课程偏重本项目中的基础知识和操作实践，适合本项目入门者，购买课程后会定期安排线上答疑活动（语音交流、方便透彻！） [课程报名](https://bbs.amovlab.com/plugin.php?id=zhanmishu_video:video&mod=video&cid=43)
   
  - **配套硬件：**    即将推出，敬请期待！ 请关注 [阿木实验室淘宝店](https://shop142114972.taobao.com/?spm=a230r.7195193.1997079397.2.67d03d8dJQgFRW)　或　[阿木实验室京东旗舰店](https://mall.jd.com/index-10260560.html?from=pc)
  
@@ -26,7 +26,9 @@ Prometheus是一套开源的**自主无人机软件平台**，为无人机的智
   
  - 想了解更多资讯信息或者寻求项目合作、无人机软硬件定制服务，请扫描右方二维码并关注微信公众号 **阿木实验室**
  
+## Prometheus校园赞助计划
 
+只要使用Prometheus项目进行自主无人机开发，并发表论文，即可获得阿木奖学金，详情请戳[这里](https://mp.weixin.qq.com/s/zU-iXMKh0An-v6vZXH_Rmg) ！
 
 ## 功能展示
  - **RGBD相机建图**
@@ -70,7 +72,10 @@ Prometheus是一套开源的**自主无人机软件平台**，为无人机的智
 - **移动平台自主降落**
 	
 	<img width="400" src="https://s1.ax1x.com/2020/08/11/aLawvj.gif"/>
+
+- **无人机＋无人车协同控制**
 	
+	<img width="400" src="https://s1.ax1x.com/2020/10/13/0fAJN6.gif"/>
 
 ## 版权申明
 

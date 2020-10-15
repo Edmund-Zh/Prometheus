@@ -24,7 +24,6 @@
 using namespace std;
 
 #define MIN_DIS 0.1
-#define FLY_HEIGHT 1.5
 # define NODE_NAME "planning_mission"
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>全 局 变 量<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 prometheus_msgs::ControlCommand Command_Now;                               //发送给控制模块 [px4_pos_controller.cpp]的命令
@@ -61,6 +60,7 @@ ros::Publisher local_planner_switch_pub,global_planner_switch_pub,fast_planner_s
 std_msgs::Bool switch_on;
 std_msgs::Bool switch_off;
 
+float FLY_HEIGHT;
 bool control_yaw_flag;
 int flag_get_cmd = 0;
 int flag_get_goal = 0;
@@ -137,6 +137,7 @@ int main(int argc, char **argv)
     ros::NodeHandle nh("~");
 
     nh.param<bool>("planning_mission/control_yaw_flag", control_yaw_flag, true);
+    nh.param<float>("planning_mission/FLY_HEIGHT", FLY_HEIGHT, 1.0);
     
     //【订阅】无人机当前状态
     ros::Subscriber drone_state_sub = nh.subscribe<prometheus_msgs::DroneState>("/prometheus/drone_state", 10, drone_state_cb);
@@ -175,7 +176,7 @@ int main(int argc, char **argv)
     while(start_flag == 0)
     {
         cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Local Planning Mission<<<<<<<<<<<<<<<<<<<<<<<<<<< "<< endl;
-        cout << "Please choose the planning method: 1 for APF, 2 for A*, 3 for Fast planner"<<endl;
+        cout << "Please choose the planning method: 1 for APF/VFH, 2 for A*, 3 for Fast planner"<<endl;
         cin >> start_flag;
 
         if (start_flag == 1)
@@ -217,6 +218,21 @@ int main(int argc, char **argv)
 
     while (ros::ok())
     {
+        // 若goal为99，则降落并退出任务
+        if(goal.pose.position.x == 99)
+        {
+            // 抵达目标附近，则停止速度控制，改为位置控制
+            Command_Now.header.stamp = ros::Time::now();
+            Command_Now.Mode                                = prometheus_msgs::ControlCommand::Land;
+            Command_Now.Command_ID                          = Command_Now.Command_ID + 1;
+            Command_Now.source = NODE_NAME;
+
+            command_pub.publish(Command_Now);
+            cout << "Quit... " << endl;
+
+            return 0;
+        }
+
         //回调
         ros::spinOnce();
 

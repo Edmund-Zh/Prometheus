@@ -31,23 +31,17 @@ extern ros::Publisher message_pub;
 class VFH: public local_planning_alg{
 private:
     bool has_local_map_;
-    bool is_prev;
     
-    double goalWeight, prevWeight, headingWeight, obstacle_weight;
+    double goalWeight, obstacle_weight;
 
-    double obs_distance;   // 感知距离
-    // double min_dist;
-    // double k_push;
+    double sensing_distance;   // 感知距离
 
-    double max_att_dist;    // 最大吸引距离
-    // double k_att;
     double ground_height;
     double ground_safe_height;
     double inflate_and_safe_distance;
     double inflate_distance;
 
     double safe_distance;
-    double prev_heading;
     double limit_v_norm;
 
     double* Hdata;
@@ -77,6 +71,7 @@ public:
     virtual void set_odom(nav_msgs::Odometry cur_odom);
     
     virtual void set_local_map(sensor_msgs::PointCloud2ConstPtr &local_map_ptr);
+    virtual void set_local_map_pcl(pcl::PointCloud<pcl::PointXYZ>::Ptr &pcl_ptr);
     
     virtual int compute_force(Eigen::Matrix<double, 3, 1> &goal, Eigen::Matrix<double, 3, 1> current_odom, Eigen::Vector3d &desired_vel);
 

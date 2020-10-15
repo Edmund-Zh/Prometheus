@@ -22,7 +22,7 @@ using namespace std;
 using namespace Eigen;
 
 #define LANDPAD_HEIGHT 0.99
-# define NODE_NAME "autonomous_landing"
+#define NODE_NAME "autonomous_landing"
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>全 局 变 量<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //---------------------------------------Drone---------------------------------------------
 prometheus_msgs::DroneState _DroneState;   
@@ -196,7 +196,7 @@ int main(int argc, char **argv)
         Command_Now.Reference_State.yaw_ref = 999;
         command_pub.publish(Command_Now);   
         cout << "Switch to OFFBOARD and arm ..."<<endl;
-        ros::Duration(3.0).sleep();
+        ros::Duration(5.0).sleep();
         
         Command_Now.header.stamp                    = ros::Time::now();
         Command_Now.Mode                                = prometheus_msgs::ControlCommand::Move;

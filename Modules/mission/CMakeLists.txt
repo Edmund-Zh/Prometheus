@@ -60,6 +60,10 @@ include_directories(
 ###############################
 ##      声明可执行cpp文件     ##
 ###############################
+add_executable(turtlebot_uav_formation turtlebot_uav_formation/turtlebot_uav_formation.cpp)
+add_dependencies(turtlebot_uav_formation prometheus_mission_gencpp)
+target_link_libraries(turtlebot_uav_formation ${catkin_LIBRARIES})
+
 add_executable(circle_crossing circle_crossing/circle_crossing.cpp)
 add_dependencies(circle_crossing prometheus_mission_gencpp)
 target_link_libraries(circle_crossing ${catkin_LIBRARIES})
@@ -79,6 +83,14 @@ target_link_libraries(color_line_following ${catkin_LIBRARIES})
 add_executable(planning_mission planning_mission/planning_mission.cpp)
 add_dependencies(planning_mission prometheus_mission_gencpp)
 target_link_libraries(planning_mission ${catkin_LIBRARIES})
+
+add_executable(planning_mission_astar planning_mission/planning_mission_astar.cpp)
+add_dependencies(planning_mission_astar prometheus_mission_gencpp)
+target_link_libraries(planning_mission_astar ${catkin_LIBRARIES})
+
+add_executable(pub_goal planning_mission/pub_goal.cpp)
+add_dependencies(pub_goal prometheus_mission_gencpp)
+target_link_libraries(pub_goal ${catkin_LIBRARIES})
 
 add_executable(waypoint_tracking waypoint_tracking/waypoint_tracking.cpp)
 add_dependencies(waypoint_tracking prometheus_mission_gencpp)
